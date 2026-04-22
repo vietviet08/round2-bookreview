@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: bookreview
+  datasource:
+    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:28264/railway?sslmode=require&loginTimeout=10
+    username: postgres
+    password: PGzOldwbUKASrotGszCQTxlkJvLlKDHq
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-init-sql: SET TIME ZONE 'Asia/Ho_Chi_Minh'
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: Asia/Ho_Chi_Minh
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+    time-zone: Asia/Ho_Chi_Minh
+
+spring.main.allow-bean-definition-overriding: true
+
