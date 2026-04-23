@@ -12,6 +12,7 @@ import org.vietquoc.round2.entity.Book;
 import org.vietquoc.round2.repository.AuthorRepository;
 import org.vietquoc.round2.repository.BookRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +24,11 @@ public class BookService {
     @Transactional(readOnly = true)
     public Page<BookDTO> findAll(Pageable pageable) {
         return bookRepository.findAll(pageable).map(this::toDTO);
+    }
+
+    @Transactional(readOnly = true)
+    public List<BookDTO> findAllList() {
+        return bookRepository.findAll().stream().map(this::toDTO).toList();
     }
 
     @Transactional(readOnly = true)
@@ -71,8 +77,8 @@ public class BookService {
                 .id(book.getId())
                 .title(book.getTitle())
                 .quantity(book.getQuantity())
-                .authorId(book.getAuthor().getId() != null ? book.getAuthor().getId() : null)
-                .authorName(book.getAuthor().getName() != null ? book.getAuthor().getName() : null)
+                .authorId(book.getAuthor() != null ? book.getAuthor().getId() : null)
+                .authorName(book.getAuthor() != null ? book.getAuthor().getName() : null)
                 .build();
     }
 

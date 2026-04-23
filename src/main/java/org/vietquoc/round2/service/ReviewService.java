@@ -6,14 +6,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.vietquoc.round2.dto.BookDTO;
 import org.vietquoc.round2.dto.ReviewDTO;
 import org.vietquoc.round2.entity.Book;
 import org.vietquoc.round2.entity.Review;
 import org.vietquoc.round2.repository.BookRepository;
 import org.vietquoc.round2.repository.ReviewRepository;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Service

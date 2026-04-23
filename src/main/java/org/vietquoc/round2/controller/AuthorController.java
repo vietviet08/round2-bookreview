@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.vietquoc.round2.dto.AuthorDTO;
 import org.vietquoc.round2.service.AuthorService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/authors")
 @RequiredArgsConstructor
@@ -21,6 +23,11 @@ public class AuthorController {
             @RequestParam(defaultValue = "10") int size
     ) {
         return ResponseEntity.ok(authorService.findAll(PageRequest.of(page, size)));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<AuthorDTO>> findAllList() {
+        return ResponseEntity.ok(authorService.findAllList());
     }
 
     @GetMapping("/{id}")

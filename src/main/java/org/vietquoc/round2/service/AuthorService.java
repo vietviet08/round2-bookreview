@@ -9,6 +9,7 @@ import org.vietquoc.round2.dto.AuthorDTO;
 import org.vietquoc.round2.entity.Author;
 import org.vietquoc.round2.repository.AuthorRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,6 +20,11 @@ public class AuthorService {
     @Transactional(readOnly = true)
     public Page<AuthorDTO> findAll(Pageable pageable) {
         return authorRepository.findAll(pageable).map(this::toDTO);
+    }
+
+    @Transactional(readOnly = true)
+    public List<AuthorDTO> findAllList() {
+        return authorRepository.findAll().stream().map(this::toDTO).toList();
     }
 
     @Transactional(readOnly = true)

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.vietquoc.round2.dto.BookDTO;
 import org.vietquoc.round2.service.BookService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/books")
 @RequiredArgsConstructor
@@ -22,6 +24,11 @@ public class BookController {
             @RequestParam(defaultValue = "10") int size
     ) {
         return ResponseEntity.ok(bookService.findAll(PageRequest.of(page, size)));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<BookDTO>> getAllList() {
+        return ResponseEntity.ok(bookService.findAllList());
     }
 
     @GetMapping("/{id}")
